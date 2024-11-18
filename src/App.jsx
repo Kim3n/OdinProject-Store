@@ -1,5 +1,5 @@
 
-import {BrowserRouter as Router, Route, Routes, useLocation} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import NavBar from "./Components/NavBar.jsx";
 import ProductContainer from "./Components/ProductContainer.jsx";
 import {CartProvider} from "./Components/CartProdiver.jsx";
@@ -8,7 +8,8 @@ import { ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import CheckoutPage from "./Components/CheckoutPage.jsx";
-import {useEffect} from "react";
+import {TitleUpdater} from "./Components/TitleUpdater.jsx";
+
 
 
 
@@ -31,52 +32,12 @@ function App() {
         return <h2 className="text-center mt-10 text-3xl">Contact Page</h2>;
     }
 
-    function TitleUpdater() {
-        const location = useLocation();
-
-        useEffect(() => {
-            const routeTitles = {
-                "/": "Home  - Store Name",
-                "/products": "Products  - Store Name",
-                "/contact": "Contact Us  - Store Name",
-                "/checkout": "Checkout - Store Name",
-            };
-
-            const originalTitle = routeTitles[location.pathname] || "Store Name";
-
-            const productMatch = location.pathname.match(/^\/product\/\d+$/);
-            if (productMatch) {
-                document.title = "Product Details  - Store Name";
-            } else {
-                document.title = originalTitle;
-            }
-
-
-            const handleVisibilityChange = () => {
-                if (document.hidden) {
-                    document.title = "Store Name";
-                } else {
-                    document.title = productMatch
-                        ? "Product Details  - Store Name"
-                        : originalTitle;
-                }
-            };
-
-            document.addEventListener("visibilitychange", handleVisibilityChange);
-
-            return () => {
-                document.removeEventListener("visibilitychange", handleVisibilityChange);
-            };
-        }, [location.pathname]);
-
-        return null;
-    }
 
     return (
         <CartProvider>
             <Router>
                 <div className="m-0 p-0">
-                    <TitleUpdater />
+                    <TitleUpdater></TitleUpdater>
                     <NavBar />
                     <Routes>
                         <Route path="/" element={<Home/>}/>

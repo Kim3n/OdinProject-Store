@@ -3,15 +3,16 @@ import { useParams } from "react-router-dom";
 import {toast} from "react-toastify";
 import { useCart } from "./CartProdiver.jsx";
 import {useEffect, useState} from "react";
+import {useProductTitle} from "./TitleUpdater.jsx";
+
 
 
 
 function ProductPage() {
-    const { id } = useParams();  // Retrieve the productId from the URL
-    const [product, setProduct] = useState(null);  // State to hold product details
-    const [loading, setLoading] = useState(true);  // Loading state
-    const { addToCart } = useCart(); // Access the addToCart function from the CartContext
-    // Fetch the product details based on the productId (id)
+    const { id } = useParams();  
+    const [product, setProduct] = useState(null);  
+    const [loading, setLoading] = useState(true);  
+    const { addToCart } = useCart();
     const fetchProduct = async () => {
         try {
             const res = await fetch(`https://fakestoreapi.com/products/${id}`);
@@ -27,6 +28,9 @@ function ProductPage() {
     useEffect(() => {
         fetchProduct();
     }, [id]);
+
+    useProductTitle(product);
+
     if (loading) {
         return(
             <div className="product-page flex flex-col justify-center items-center h-[90vh]">
@@ -44,7 +48,6 @@ function ProductPage() {
     if (!product) {
         return <div>Product not found.</div>;
     }
-
     // Function to handle adding product to the cart
     const handleAddToCart = (e, product) => {
         e.preventDefault();
