@@ -51,7 +51,7 @@ function CheckoutPage() {
                             <div className="flex items-center mt-3">
                                 <img
                                     className="h-10 mr-3 object-contain mix-blend-multiply object-center"
-                                    src={item.imageUrl}
+                                    src={item.image}
                                     alt={item.title}
                                 />
                                 <strong onClick={() => handleProductClick(item.productId)}
