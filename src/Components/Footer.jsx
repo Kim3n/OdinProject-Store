@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 export default function Footer() {
     return (
         <footer
-            className="flex w-full flex-col flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-bg-gray-800 bg-gray-800 py-6 text-center md:justify-between">
+            className="flex w-full flex-col flex-wrap items-center justify-center gap-y-6 gap-x-12 border-t border-bg-gray-800 bg-gray-800 py-6 text-center md:justify-between z-10">
             <ul className="flex flex-wrap items-center gap-y-2 gap-x-8 justify-center md:justify-start">
 
                 <li>
