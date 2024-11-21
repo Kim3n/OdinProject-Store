@@ -24,13 +24,13 @@ function TitleUpdater() {
 
     useEffect(() => {
         const routeTitles = {
-            "/": "Home - Store Name",
+            "/": "HomePage - Store Name",
             "/products": "Products - Store Name",
             "/contact": "Contact Us - Store Name",
             "/checkout": "Checkout - Store Name",
         };
 
-        let title = routeTitles[location.pathname] || 'Store Name';
+        let title = routeTitles[location.pathname] || 'Store Name'; //maybe don't change it when user leaves so they know exactly which page they were on? Just don't change it to "I miss you", "come back" or something like that because it's just annoying
         const originalTitle = document.title;
 
         document.title = title;

@@ -53,9 +53,7 @@ function ProductContainer() {
     return (
         <>
             <div className="flex justify-center content-center flex-col mt-10 ">
-
-
-                <div className="max-w-3xl mx-auto">
+                <div className="w-3/6 self-center">
                     <label htmlFor="default-search"
                            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div className="relative">
@@ -78,7 +76,7 @@ function ProductContainer() {
 
 
                 <div
-                    className="flex flex-wrap justify-center gap-4 w-2/3 self-center mt-10">
+                    className="flex flex-wrap justify-center gap-4 w-2/3 self-center mt-10 pb-10">
                     {loading ? (
 
                         <div role="status">

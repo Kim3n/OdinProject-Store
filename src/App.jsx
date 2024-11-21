@@ -9,6 +9,11 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import CheckoutPage from "./Components/CheckoutPage.jsx";
 import {TitleUpdater} from "./Components/TitleUpdater.jsx";
+import HomePage from "./Components/HomePage.jsx";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Footer from "./Components/Footer.jsx";
+import ContactUs from "./Components/ContactUs.jsx";
 
 
 
@@ -16,57 +21,63 @@ import {TitleUpdater} from "./Components/TitleUpdater.jsx";
 function App() {
 
     function Home() {
-        return <h2 className="text-center mt-10 text-3xl">Store Home Page</h2>;
+        return  <>
+        <HomePage/>
+    </>
+
     }
 
     function Products() {
         return (
             <>
-                <h2 className="text-center mt-10 text-3xl ">Products Page</h2>
                 <ProductContainer/>
             </>
         );
     }
 
     function Contact() {
-        return <h2 className="text-center mt-10 text-3xl">Contact Page</h2>;
+        return <ContactUs></ContactUs>
     }
 
 
     return (
         <CartProvider>
             <Router>
-                <div className="m-0 p-0">
-                    <TitleUpdater></TitleUpdater>
-                    <NavBar />
-                    <Routes>
-                        <Route path="/" element={<Home/>}/>
-                        <Route
-                            path="/Products"
-                            element={<Products />}
-                        />
-                        <Route path="/contact" element={<Contact/>}/>
-                        <Route path="/product/:id" element={<ProductPage/>}/>
-                        <Route path="/checkout" element={<CheckoutPage />} />
+                <div className="min-h-screen flex flex-col">
+                    <div className="m-0 p-0 flex-1 flex flex-col">
+                        <TitleUpdater></TitleUpdater>
+                        <NavBar/>
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            <Route
+                                path="/Products"
+                                element={<Products/>}
+                            />
+                            <Route path="/contact" element={<Contact/>}/>
+                            <Route path="/product/:id" element={<ProductPage/>}/>
+                            <Route path="/checkout" element={<CheckoutPage/>}/>
 
-                    </Routes>
-                    <ToastContainer
-                        position="bottom-center"
-                        autoClose={3000}
-                        hideProgressBar={true}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="colored" // Apply colored theme for small toasts
-                        className="toast-container" // Custom class if you want to add more custom styles
-                    />
+                        </Routes>
+                        <ToastContainer
+                            position="bottom-center"
+                            autoClose={3000}
+                            hideProgressBar={true}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="colored" // Apply colored theme for small toasts
+                            className="toast-container" // Custom class if you want to add more custom styles
+                        />
+
+                    </div>
+                    <Footer/>
                 </div>
             </Router>
         </CartProvider>
-    )
+)
 }
 
 export default App

@@ -3,8 +3,11 @@ import {useCart} from "./CartProdiver.jsx";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import { FaTrash, FaCashRegister  } from "react-icons/fa";
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 function CheckoutPage() {
+    const { width, height } = useWindowSize()
     const { cartItems, clearCart, removeFromCart } = useCart();
     const [purchaseComplete, setPurchaseComplete] = useState(false);
     const navigate = useNavigate();
@@ -17,6 +20,10 @@ function CheckoutPage() {
     if (purchaseComplete) {
         return (
             <div className="p-6 flex flex-col justify-center items-center">
+                <Confetti
+                    width={width}
+                    height={height}
+                />
                 <h2 className="text-2xl font-semibold mb-4">Purchase Complete!</h2>
                 <p>Thank you for your order. Your purchase has been successfully completed.</p>
             </div>
@@ -26,6 +33,7 @@ function CheckoutPage() {
     if (cartItems.length === 0) {
         return (
             <div className="p-6 flex justify-center content-center">
+
                 <h2>Your cart is empty. Please add items to your cart.</h2>
             </div>
         );

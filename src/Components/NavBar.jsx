@@ -22,7 +22,7 @@ function NavBar() {
         <nav className="bg-gray-800 z-40 w-full px-6 py-4 flex justify-between items-center relative">
             {/* Logo Section */}
             <div className="flex items-center">
-                <Link to="/" className="text-3xl text-white font-semibold">
+                <Link to="/" className="text-3xl text-white max-w-2xl mb-4 font-extrabold tracking-tight leading-none ">
                     STORE NAME
                 </Link>
             </div>

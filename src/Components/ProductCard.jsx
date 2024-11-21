@@ -1,5 +1,5 @@
 
-import { useNavigate } from 'react-router-dom';  // Import useNavigate to handle navigation
+import { useNavigate } from 'react-router-dom';
 import { useCart } from "./CartProdiver.jsx";
 
 import {toast} from "react-toastify";
@@ -27,7 +27,6 @@ function ProductCard({ image, title, description, price, productId}) {
     const handleAddToCart = (e, product) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log("Product to add:", product);  // Check if image is included
         addToCart(product);
         toast.success(<div>{product.title} has been added to your cart!</div>, {
             autoClose: 1000,
@@ -44,15 +43,20 @@ function ProductCard({ image, title, description, price, productId}) {
                         src={image}
                         alt={title}
                     />
-
-                    <div className="absolute top-0 right-0">
-                        <div className="w-32 h-8 absolute top-4 -right-8">
-                            <div
-                                className="h-full w-full bg-red-500 text-white text-center leading-8 font-semibold transform rotate-45">
-                                SALE
+                    {
+                        //Could have a boolean in API for sales to dynamically show sale ribbon but doing it simple way now
+                        price < 50 &&
+                        <div className="absolute top-0 right-0">
+                            <div className="w-32 h-8 absolute top-4 -right-8">
+                                <div
+                                    className="h-full w-full bg-red-500 text-white text-center leading-8 font-semibold transform rotate-45">
+                                    SALE
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                    }
+
                 </div>
 
                 {/* Product Details */}
